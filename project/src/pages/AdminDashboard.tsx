@@ -26,7 +26,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/dashboard');
+        const response = await fetch('http://library-management-backend-ccm4.onrender.com/api/dashboard');
         if (!response.ok) {
           throw new Error('Failed to fetch dashboard data');
         }
