@@ -84,7 +84,7 @@ const StudentDashboard = () => {
     localStorage.removeItem('studentId');
     localStorage.removeItem('studentFirstName');
     // Redirect to landing page
-    navigate('http://localhost:5173/');
+    navigate('https://library-management-backend-ccm4.onrender.com');
     setShowLogoutConfirm(false);
   };
 
