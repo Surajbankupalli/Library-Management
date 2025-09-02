@@ -14,7 +14,7 @@ const AdminLogin = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://library-management-backend-ccm4.onrender.com/api/admin/login', formData);
+      const res = await axios.post('http://localhost:5000/api/admin/login', formData);
       localStorage.setItem('adminToken', res.data.token);
       localStorage.setItem('adminFirstName', res.data.admin.firstName);
       navigate('/admin/dashboard');
