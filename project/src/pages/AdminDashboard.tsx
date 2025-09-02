@@ -51,7 +51,7 @@ const AdminDashboard = () => {
     // Clear any auth tokens or user data from localStorage
     localStorage.removeItem('adminToken');
     // Redirect to landing page
-    navigate('https://library-management-backend-ccm4.onrender.com');
+    navigate('http://localhost:5173/');
     setShowLogoutConfirm(false);
   };
 
