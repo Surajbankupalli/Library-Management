@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BookOpen, User, Mail, Building2, Lock } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 const StudentSignup = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const StudentSignup = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/student/signup', formData);
+      await axios.post(`${API_BASE_URL}/api/student/signup`, formData);
       alert('Signup Successful! Please login.');
       navigate('/student/login');
     } catch (err: any) {

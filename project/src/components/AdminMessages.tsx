@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AdminSidebar from './AdminSidebar';
+import { API_BASE_URL } from '../config/api';
 
 interface BookRequest {
   _id: string;
@@ -30,7 +31,7 @@ const AdminMessages = () => {
   const fetchRequests = async () => {
     try {
       console.log('Fetching requests...');
-      const response = await fetch('http://localhost:5000/api/requests');
+      const response = await fetch(`${API_BASE_URL}/api/requests`);
       const data = await response.json();
       
       if (!response.ok) {
@@ -57,7 +58,7 @@ const AdminMessages = () => {
         throw new Error('Request not found');
       }
 
-      const response = await fetch(`http://localhost:5000/api/requests/${requestId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +86,7 @@ const AdminMessages = () => {
         )
       );
 
-      await fetch('http://localhost:5000/api/notifications', {
+      await fetch(`${API_BASE_URL}/api/notifications`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -131,7 +132,7 @@ const AdminMessages = () => {
         throw new Error('Request not found');
       }
   
-      const response = await fetch(`http://localhost:5000/api/requests/${requestId}/return`, {
+      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/return`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +157,7 @@ const AdminMessages = () => {
         )
       );
   
-      await fetch('http://localhost:5000/api/notifications', {
+      await fetch(`${API_BASE_URL}/api/notifications`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

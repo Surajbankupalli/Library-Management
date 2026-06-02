@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Sidebar from './Sidebar';
+import { API_BASE_URL } from '../config/api';
 
 interface Notification {
   _id: string;
@@ -18,7 +19,7 @@ const UserMessages = () => {
   const fetchNotifications = useCallback(async () => {
     try {
       console.log('Fetching notifications for user:', userId);
-      const response = await fetch(`http://localhost:5000/api/notifications/user/${userId}`);
+      const response = await fetch(`${API_BASE_URL}/api/notifications/user/${userId}`);
       const data = await response.json();
       
       if (!response.ok) {
@@ -62,7 +63,7 @@ const UserMessages = () => {
 
   const markAsRead = async (notificationId: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/notifications/${notificationId}/read`, {
+      const response = await fetch(`${API_BASE_URL}/api/notifications/${notificationId}/read`, {
         method: 'PUT',
       });
       

@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { Book, Clock, BookMarked, LogOut } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config/api';
 
 const StudentDashboard = () => {
   const currentDate = format(new Date(), 'MMMM d, yyyy');
@@ -25,7 +26,7 @@ const StudentDashboard = () => {
           return;
         }
 
-        const response = await fetch(`http://localhost:5000/api/requests/userrequests/${userId}`);
+        const response = await fetch(`${API_BASE_URL}/api/requests/userrequests/${userId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch user requests');
         }
@@ -84,7 +85,7 @@ const StudentDashboard = () => {
     localStorage.removeItem('studentId');
     localStorage.removeItem('studentFirstName');
     // Redirect to landing page
-    navigate('http://localhost:5173/');
+    navigate('/');
     setShowLogoutConfirm(false);
   };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import { BookOpen } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 interface BorrowedBook {
   id: string;
@@ -25,7 +26,7 @@ const BorrowedBooks = () => {
         throw new Error('User not logged in');
       }
 
-      const response = await fetch(`http://localhost:5000/api/requests/userrequests/${userId}`);
+      const response = await fetch(`${API_BASE_URL}/api/requests/userrequests/${userId}`);
       if (!response.ok) {
         throw new Error('Failed to fetch borrowed books');
       }

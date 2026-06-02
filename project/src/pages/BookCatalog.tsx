@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import { Search, BookOpen, Clock, Filter, X, ExternalLink } from 'lucide-react';
 import { format, addDays } from 'date-fns';
+import { API_BASE_URL } from '../config/api';
 
 interface BorrowDialogProps {
   book: Book;
@@ -47,7 +48,7 @@ const BorrowDialog: React.FC<BorrowDialogProps> = ({ book, onClose }) => {
 
       console.log('Sending request data:', requestData);
 
-      const response = await fetch('http://localhost:5000/api/requests', {
+      const response = await fetch(`${API_BASE_URL}/api/requests`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -186,7 +187,7 @@ const ReserveDialog: React.FC = ({ book, onClose } :any) => {
 
       console.log('Sending request data:', requestData);
 
-      const response = await fetch('http://localhost:5000/api/requests/res', {
+      const response = await fetch(`${API_BASE_URL}/api/requests/res`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -289,7 +290,7 @@ const BookCatalog = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/books');
+        const response = await fetch(`${API_BASE_URL}/api/books`);
         if (!response.ok) {
           throw new Error('Failed to fetch books');
         }

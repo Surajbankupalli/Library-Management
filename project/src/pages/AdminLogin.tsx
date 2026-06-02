@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BookOpen, Mail, Lock } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ adminId: '', password: '' });
@@ -14,7 +15,7 @@ const AdminLogin = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/admin/login', formData);
+      const res = await axios.post(`${API_BASE_URL}/api/admin/login`, formData);
       localStorage.setItem('adminToken', res.data.token);
       localStorage.setItem('adminFirstName', res.data.admin.firstName);
       navigate('/admin/dashboard');

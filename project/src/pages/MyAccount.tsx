@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import { BookOpen, Clock, AlertCircle } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 interface BorrowHistory {
   id: string;
@@ -20,7 +21,7 @@ const MyAccount = () => {
     const fetchBorrowHistory = async () => {
       try {
         const userId = localStorage.getItem('studentId');
-        const response = await fetch(`http://localhost:5000/api/requests/userrequests/${userId}`);
+        const response = await fetch(`${API_BASE_URL}/api/requests/userrequests/${userId}`);
         const data = await response.json();
         console.log("Aditya");
         console.log(data);

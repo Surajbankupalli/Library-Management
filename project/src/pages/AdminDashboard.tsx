@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { BookOpen, Users, Library, LogOut } from 'lucide-react';
 import AdminSidebar from '../components/AdminSidebar';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config/api';
 
 interface DashboardData {
   totalBooks: number;
@@ -26,7 +27,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/dashboard');
+        const response = await fetch(`${API_BASE_URL}/api/dashboard`);
         if (!response.ok) {
           throw new Error('Failed to fetch dashboard data');
         }
@@ -51,7 +52,7 @@ const AdminDashboard = () => {
     // Clear any auth tokens or user data from localStorage
     localStorage.removeItem('adminToken');
     // Redirect to landing page
-    navigate('http://localhost:5173/');
+    navigate('/');
     setShowLogoutConfirm(false);
   };
 

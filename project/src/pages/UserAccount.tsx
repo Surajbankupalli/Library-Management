@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
+import { API_BASE_URL } from '../config/api';
 
 interface BorrowRequest {
   _id: string;
@@ -34,7 +35,7 @@ const UserAccount = () => {
 
     try {
       console.log('Fetching user requests...');
-      const response = await fetch(`http://localhost:5000/api/requests/user/${userId}`);
+      const response = await fetch(`${API_BASE_URL}/api/requests/user/${userId}`);
       const data = await response.json();
 
       if (!response.ok) {

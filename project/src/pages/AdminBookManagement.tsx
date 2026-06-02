@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import { PlusCircle, Trash2, Edit, X } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 interface Book {
   id: number;
@@ -43,7 +44,7 @@ const AdminBookManagement = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/books/title/${encodeURIComponent(title.trim())}`, {
+      const response = await fetch(`${API_BASE_URL}/api/books/title/${encodeURIComponent(title.trim())}`, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -80,7 +81,7 @@ const AdminBookManagement = () => {
     }
   
     try {
-      const response = await fetch(`http://localhost:5000/api/books/title/${encodeURIComponent(bookTitleToSearch.trim())}`, {
+      const response = await fetch(`${API_BASE_URL}/api/books/title/${encodeURIComponent(bookTitleToSearch.trim())}`, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -123,7 +124,7 @@ const AdminBookManagement = () => {
             return;
           }
 
-          const response = await fetch('http://localhost:5000/api/books', {
+          const response = await fetch(`${API_BASE_URL}/api/books`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -182,7 +183,7 @@ const AdminBookManagement = () => {
             count: count
           };
 
-          const response = await fetch(`http://localhost:5000/api/books/title/${encodeURIComponent(originalTitle)}`, {
+          const response = await fetch(`${API_BASE_URL}/api/books/title/${encodeURIComponent(originalTitle)}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -221,7 +222,7 @@ const AdminBookManagement = () => {
             return;
           }
 
-          const response = await fetch(`http://localhost:5000/api/books/title/${encodeURIComponent(title.trim())}`, {
+          const response = await fetch(`${API_BASE_URL}/api/books/title/${encodeURIComponent(title.trim())}`, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',

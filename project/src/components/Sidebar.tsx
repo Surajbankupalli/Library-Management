@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { LayoutDashboard, BookOpen, User, HelpCircle, MessageSquare, BookCheck, Bell, LogOut } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 const Sidebar = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const Sidebar = () => {
 
   const fetchUnreadCount = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/notifications/user/${userId}/unread/count`);
+      const response = await fetch(`${API_BASE_URL}/api/notifications/user/${userId}/unread/count`);
       const data = await response.json();
       setUnreadCount(data.count);
     } catch (error) {

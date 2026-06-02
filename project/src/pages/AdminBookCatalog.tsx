@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
+import { API_BASE_URL } from '../config/api';
 import { Search, Clock, Filter, X, Info } from 'lucide-react';
 
 interface Book {
@@ -90,7 +91,7 @@ const AdminBookCatalog = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/books'); // Replace with your backend URL
+        const response = await fetch(`${API_BASE_URL}/api/books`); // Replace with your backend URL
         const data = await response.json();
         setBooks(data);
       } catch (error) {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { LayoutDashboard, BookOpen, Settings, MessageSquare } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 const AdminSidebar = () => {
   const location = useLocation();
@@ -9,7 +10,7 @@ const AdminSidebar = () => {
   useEffect(() => {
     const fetchPendingRequests = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/requests/pending/count');
+        const response = await fetch(`${API_BASE_URL}/api/requests/pending/count`);
         const data = await response.json();
         setPendingRequests(data.count);
       } catch (error) {
